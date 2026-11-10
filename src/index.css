@@ -1,0 +1,89 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Cormorant Garamond", Georgia, serif;
+  --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  --color-warm-alabaster: #FAF7F2;
+  --color-cashmere-cream: #F2ECE1;
+  --color-obsidian-noir: #11100F;
+  --color-espresso-charcoal: #1C1A17;
+  --color-champagne-gold: #C59B6D;
+  --color-champagne-gold-hover: #B08455;
+  --color-rose-bronze: #D4AF37;
+}
+
+/* Base resets & typography */
+html {
+  scroll-behavior: smooth;
+  font-family: var(--font-sans);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  /* Use overflow-x: clip so IntersectionObserver & Framer Motion whileInView work perfectly */
+  overflow-x: clip;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Inputs on mobile: min 16px font-size to prevent iOS Safari auto-zoom */
+@media screen and (max-width: 640px) {
+  input, select, textarea {
+    font-size: 16px !important;
+  }
+}
+
+/* Custom luxury scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #11100F;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2A2622;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #C59B6D;
+}
+
+/* Glassmorphism helpers */
+.glass-noir {
+  background: rgba(17, 16, 15, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(197, 155, 109, 0.15);
+}
+
+.glass-alabaster {
+  background: rgba(250, 247, 242, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(197, 155, 109, 0.2);
+}
+
+.gold-gradient-text {
+  background: linear-gradient(135deg, #F5E6CA 0%, #C59B6D 50%, #D4AF37 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gold-border-glow {
+  box-shadow: 0 0 25px -5px rgba(197, 155, 109, 0.25);
+}
+
+/* Smooth keyframe shimmer */
+@keyframes float-gentle {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+.animate-float-gentle {
+  animation: float-gentle 6s ease-in-out infinite;
+}
